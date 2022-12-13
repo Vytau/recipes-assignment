@@ -1,11 +1,9 @@
 package nl.abn.recipes.controller;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import nl.abn.recipes.dto.RecipeDto;
 import nl.abn.recipes.service.RecipeService;
-import org.springframework.boot.ApplicationArguments;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +23,8 @@ public class RecipeController {
         return "pong";
     }
 
-    @GetMapping(value = "/all", name = "Get all available recipes")
-    ResponseEntity<List<RecipeDto>> getAllRecipes() {
+    @GetMapping("/all")
+    public ResponseEntity<List<RecipeDto>> getAllRecipes() {
         final List<RecipeDto> recipes = recipeService.getAllRecipes();
 
         return new ResponseEntity<>(recipes, HttpStatus.OK);
